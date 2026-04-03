@@ -3,9 +3,7 @@ import {
   Layers, 
   Trash2 
 } from 'lucide-react'
-import { createCollection } from '@/app/actions/collections'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { CollectionForm } from './collection-form'
 
 export default async function AdminCollectionsPage() {
   const supabase = await createClient()
@@ -70,42 +68,7 @@ export default async function AdminCollectionsPage() {
 
       {/* Sidebar Add Form */}
       <div className="space-y-8">
-        <div className="bg-stone-900 p-10 rounded-[3rem] text-white space-y-8 sticky top-32 shadow-2xl">
-          <div className="space-y-2">
-            <h3 className="text-2xl font-serif font-bold">Thêm chủ đề mới</h3>
-            <p className="text-stone-400 text-xs uppercase tracking-widest leading-loose">Mỗi bộ sưu tập là một chương mới trong hành trình sáng tạo của POTTERY.</p>
-          </div>
-
-          <form action={createCollection} className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-bold ml-1">Tên bộ sưu tập</label>
-              <Input 
-                name="title" 
-                required 
-                placeholder="Ví dụ: Men Gốm Cổ"
-                className="bg-stone-800 border-none rounded-xl h-12 px-6 focus:ring-yellow-500/50 text-white placeholder:text-stone-600"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-bold ml-1">Mô tả ngắn</label>
-              <textarea 
-                name="description" 
-                rows={4}
-                required
-                placeholder="Câu chuyện đằng sau các tác phẩm..."
-                className="w-full bg-stone-800 border-none rounded-2xl p-6 focus:ring-2 focus:ring-yellow-500/50 outline-none text-sm transition-all placeholder:text-stone-600"
-              />
-            </div>
-
-            <Button 
-              type="submit" 
-              className="w-full h-14 rounded-full bg-white text-stone-900 hover:bg-stone-100 font-bold transition-all shadow-xl"
-            >
-              Phát hành Bộ sưu tập
-            </Button>
-          </form>
-        </div>
+        <CollectionForm />
       </div>
     </div>
   )
